@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Management Chat</title>
+  <link rel="stylesheet" href="ii9s.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!-- Left sidebar menu -->
+  <div class="menu">
+    <ul class="menu-content">
+      <li><a href="#"><span class="material-icons">home</span><span>Home</span></a></li>
+      <li><a href="#"><span class="material-icons">dashboard</span><span>DashBoard</span></a></li>
+      <li><a href="#"><span class="material-icons">explore</span><span>Explore</span></a></li>
+      <li><a href="#"><span class="material-icons">credit_card</span><span>Payments</span></a></li>  
+      <li><a href="#"><span class="material-icons">settings</span><span>Settings</span></a></li>
+      <li><a href="#"><span class="material-icons">person</span><span>Account</span></a></li>
+      <li><a href="#"><span class="material-icons">report</span><span>Report</span></a></li>
+      <li><a href="#"><span class="material-icons">email</span><span>Contact</span></a></li>
+      <li><a href="#"><span class="material-icons">logout</span><span>Logout</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main chat area -->
+  <div class="main-content">
+    <div class="chat-header">
+      <h2>Property Management Chat</h2>
+      <div class="status">
+        <div class="status-indicator"></div>
+        <span>Online</span>
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <!-- Received message (Owner) -->
+      <div class="message received">
+        <div class="message-content">
+          <p>Hello, I wanted to let you know that the plumber will be coming tomorrow at 10 AM to fix the kitchen sink.</p>
+          <span class="message-time">Yesterday, 3:45 PM</span>
+        </div>
+      </div>
+
+      <!-- Sent message (Tenant) -->
+      <div class="message sent">
+        <div class="message-content">
+          <p>Thanks for letting me know. I'll make sure to be home.</p>
+          <span class="message-time">Yesterday, 4:12 PM</span>
+        </div>
+      </div>
+
+      <!-- Received message (Owner) -->
+      <div class="message received">
+        <div class="message-content">
+          <p>Also, I noticed the rent payment for this month hasn't come through yet. Is everything okay?</p>
+          <span class="message-time">Today, 9:30 AM</span>
+        </div>
+      </div>
+
+      <!-- Sent message (Tenant) -->
+      <div class="message sent">
+        <div class="message-content">
+          <p>I sent it this morning, it should show up soon. The bank said there might be a 1-2 day processing time.</p>
+          <span class="message-time">Today, 10:15 AM</span>
+        </div>
+      </div>
+
+      <!-- Received message (Owner) -->
+      <div class="message received">
+        <div class="message-content">
+          <p>Great, I'll check again tomorrow. Also, don't forget about the building inspection next Wednesday at 2 PM.</p>
+          <span class="message-time">Today, 10:35 AM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-input">
+      <input type="text" placeholder="Type a message...">
+      <button>Send</button>
+    </div>
+  </div>
+
+  <!-- Right sidebar - Recent conversations -->
+  <div class="conversations-sidebar">
+    <div class="conversations-header">
+      <span>Recent Conversations</span>
+      <div class="icons">
+        <i class="material-icons">create</i>
+        <i class="material-icons">settings</i>
+      </div>
+    </div>
+    
+    <div class="conversation-search">
+      <input type="text" placeholder="Search conversations">
+    </div>
+    
+    <div class="conversation-list">
+      <!-- Active conversation -->
+      <div class="conversation active">
+        <div class="conversation-avatar" style="background-color: #ff6b6b;">MS</div>
+        <div class="conversation-info">
+          <div class="conversation-top">
+            <span class="conversation-name">Michael Smith (Owner)</span>
+            <span class="conversation-time">Today, 10:35 AM</span>
+          </div>
+          <div class="conversation-preview">Great, I'll check again tomorrow. Also, don't forget about...</div>
+        </div>
+        <div class="unread-badge">1</div>
+      </div>
+      
+      <!-- Other conversations -->
+      <div class="conversation">
+        <div class="conversation-avatar" style="background-color: #4ecdc4;">JB</div>
+        <div class="conversation-info">
+          <div class="conversation-top">
+            <span class="conversation-name">Jennifer Brown (Tenant)</span>
+            <span class="conversation-time">Yesterday</span>
+          </div>
+          <div class="conversation-preview">The AC in unit 3B isn't working properly...</div>
+        </div>
+      </div>
+      
+      <div class="conversation">
+        <div class="conversation-avatar" style="background-color: #ffbe0b;">RD</div>
+        <div class="conversation-info">
+          <div class="conversation-top">
+            <span class="conversation-name">Robert Davis (Owner)</span>
+            <span class="conversation-time">Monday</span>
+          </div>
+          <div class="conversation-preview">Have you received the lease renewal documents?</div>
+        </div>
+      </div>
+      
+      <div class="conversation">
+        <div class="conversation-avatar" style="background-color: #8338ec;">TW</div>
+        <div class="conversation-info">
+          <div class="conversation-top">
+            <span class="conversation-name">Taylor Wilson (Tenant)</span>
+            <span class="conversation-time">Friday</span>
+          </div>
+          <div class="conversation-preview">I'll be out of town next month, can someone check...</div>
+        </div>
+      </div>
+      
+      <div class="conversation">
+        <div class="conversation-avatar" style="background-color: #3a86ff;">AM</div>
+        <div class="conversation-info">
+          <div class="conversation-top">
+            <span class="conversation-name">Alex Miller (Owner)</span>
+            <span class="conversation-time">Thursday</span>
+          </div>
+          <div class="conversation-preview">The parking lot will be repaved next week...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

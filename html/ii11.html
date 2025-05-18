@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="stylesheet" href="ii11s.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <header>
+    <a href="" class="logo">
+      <img src="img/bdb606b42e844355dacbc77fcc738923.png" class="imglogo" alt="">
+      <h2>DarDz</h2>
+    </a>
+    <!-- menu icon-->
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <!-- nav list -->
+    <ul class="navbar">
+      <li><a href="C:\Users\Dell\Desktop\test\index.html">Home</a></li>
+      <li><a href="#search">Search</a></li>
+      <li><a href="#about" class="home-active">My Settings</a></li>
+    </ul>
+    <!-- profile-->
+    <div class="profile">
+      <img src="img/profile.jpg" alt="">
+      <span>Abdus Rahman</span>
+      <i class='bx bx-caret-down'></i>
+    </div>
+  </header>
+  <!-- Side Menu -->
+  <div class="menu">
+    <ul class="menu-content">     
+      <li><a href="#"><span class="material-symbols-outlined">dashboard</span><span>DashBoard</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">explore</span><span>Explore</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">credit_card</span><span>Payments</span></a></li>  
+      <li><a href="#" class="active"><span class="material-symbols-outlined">settings</span><span>Settings</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">person</span><span>Account</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">report</span><span>Report</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">email</span><span>Contact</span></a></li>
+      <li><a href="#"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+    </ul>
+  </div>
+  
+
+  <div class="container">
+    <header>
+      <h1>Account Settings</h1>
+      <p>Manage your account preferences and privacy settings</p>
+    </header>
+
+    <div class="settings-tabs">
+      <div class="settings-tab active" onclick="openTab(event, 'account')">Account</div>
+      <div class="settings-tab" onclick="openTab(event, 'preferences')">Preferences</div>
+      <div class="settings-tab" onclick="openTab(event, 'notifications')">Notifications</div>
+      <div class="settings-tab" onclick="openTab(event, 'privacy')">Privacy</div>
+      <div class="settings-tab" onclick="openTab(event, 'billing')">Billing</div>
+      <div class="settings-tab" onclick="openTab(event, 'advanced')">Advanced</div>
+    </div>
+
+    <!-- Account Tab -->
+    <div id="account" class="tab-content active">
+      <div class="settings-section">
+        <h3>Profile Information</h3>
+        
+        <div class="avatar-upload">
+          <img src="https://via.placeholder.com/80" alt="Profile" class="avatar">
+          <div>
+            <button class="btn btn-outline btn-sm">Upload New Photo</button>
+            <button class="btn btn-outline btn-sm btn-danger">Remove</button>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label for="username">Username</label>
+            <div class="setting-description">Your unique identifier on our platform</div>
+          </div>
+          <input type="text" id="username" value="johndoe123">
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label for="displayname">Display Name</label>
+            <div class="setting-description">How your name appears to others</div>
+          </div>
+          <input type="text" id="displayname" value="John Doe">
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label for="email">Email Address</label>
+            <div class="setting-description">Used for account notifications</div>
+          </div>
+          <input type="email" id="email" value="john.doe@example.com">
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label for="phone">Phone Number</label>
+            <div class="setting-description">Used for account recovery and 2FA</div>
+          </div>
+          <input type="tel" id="phone" value="+1 (555) 123-4567">
+        </div>
+      </div>
+      
+      <div class="settings-section">
+        <h3>Security</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Password</label>
+            <div class="setting-description">Last changed 3 months ago</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Change Password</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Two-Factor Authentication</label>
+            <div class="setting-description">Add an extra layer of security to your account</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Connected Accounts</label>
+            <div class="setting-description">Services linked to your account</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Manage</button>
+        </div>
+        
+        <div class="connected-accounts">
+          <div class="account-badge">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+            Google
+            <span class="disconnect">×</span>
+          </div>
+          <div class="account-badge">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+            GitHub
+            <span class="disconnect">×</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preferences Tab -->
+    <div id="preferences" class="tab-content">
+      <div class="settings-section">
+        <h3>General Preferences</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Language</label>
+            <div class="setting-description">Interface language preference</div>
+          </div>
+          <select>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>German</option>
+            <option>Japanese</option>
+          </select>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Time Zone</label>
+            <div class="setting-description">Set your local time zone</div>
+          </div>
+          <select>
+            <option>(UTC-05:00) Eastern Time</option>
+            <option>(UTC-06:00) Central Time</option>
+            <option>(UTC-07:00) Mountain Time</option>
+            <option>(UTC-08:00) Pacific Time</option>
+          </select>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Theme</label>
+            <div class="setting-description">Appearance settings</div>
+          </div>
+          <select>
+            <option>Light</option>
+            <option>Dark</option>
+            <option>System Default</option>
+          </select>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Date & Time Format</label>
+            <div class="setting-description">How dates and times are displayed</div>
+          </div>
+          <select>
+            <option>MM/DD/YYYY</option>
+            <option>DD/MM/YYYY</option>
+            <option>YYYY-MM-DD</option>
+          </select>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Default Dashboard</label>
+            <div class="setting-description">Page shown when you log in</div>
+          </div>
+          <select>
+            <option>Home</option>
+            <option>Analytics</option>
+            <option>Projects</option>
+            <option>Messages</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Tab -->
+    <div id="notifications" class="tab-content">
+      <div class="settings-section">
+        <h3>Notification Preferences</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Email Notifications</label>
+            <div class="setting-description">Receive newsletters and activity alerts</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Push Notifications</label>
+            <div class="setting-description">Get alerts on your device</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>SMS Alerts</label>
+            <div class="setting-description">Important notifications via text</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Notification Frequency</label>
+            <div class="setting-description">How often you receive updates</div>
+          </div>
+          <select>
+            <option>Immediately</option>
+            <option>Daily Digest</option>
+            <option>Weekly Summary</option>
+          </select>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Do Not Disturb</label>
+            <div class="setting-description">Temporarily pause notifications</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Tab -->
+    <div id="privacy" class="tab-content">
+      <div class="settings-section">
+        <h3>Privacy Settings</h3>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Profile Visibility</label>
+            <div class="setting-description">Who can see your profile</div>
+          </div>
+          <select>
+            <option>Public</option>
+            <option>Friends Only</option>
+            <option>Private</option>
+          </select>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Blocked Users</label>
+            <div class="setting-description">Manage users you've blocked</div>
+          </div>
+          <button class="btn btn-outline btn-sm">View Blocked List</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Login Activity</label>
+            <div class="setting-description">Recent devices that accessed your account</div>
+          </div>
+          <button class="btn btn-outline btn-sm">View Activity</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Active Sessions</label>
+            <div class="setting-description">Manage your logged-in devices</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Manage Sessions</button>
+        </div>
+      </div>
+      
+      <div class="settings-section">
+        <h3>Data Management</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Download Your Data</label>
+            <div class="setting-description">Export all your information</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Request Data Export</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Delete Account</label>
+            <div class="setting-description">Permanently remove your account</div>
+          </div>
+          <button class="btn btn-outline btn-sm btn-danger">Delete Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Billing Tab -->
+    <div id="billing" class="tab-content">
+      <div class="settings-section">
+        <h3>Subscription Plan</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Current Plan</label>
+            <div class="setting-description">Premium - $9.99/month</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Change Plan</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Billing Cycle</label>
+            <div class="setting-description">Next charge on June 15, 2023</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Switch to Annual</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Payment Methods</label>
+            <div class="setting-description">Visa ending in 4242</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Manage Payment</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Billing History</label>
+            <div class="setting-description">View past invoices and payments</div>
+          </div>
+          <button class="btn btn-outline btn-sm">View History</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Tab -->
+    <div id="advanced" class="tab-content">
+      <div class="settings-section">
+        <h3>Application Settings</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Chat Backup</label>
+            <div class="setting-description">Automatically backup your conversations</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Auto-download Media</label>
+            <div class="setting-description">Download images and videos automatically</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-label">
+            <label>Default Currency</label>
+            <div class="setting-description">For financial transactions</div>
+          </div>
+          <select>
+            <option value="DZD">DZD - Algerian Dinar</option>
+            <option>USD - US Dollar</option>
+            <option>EUR - Euro</option>
+            <option>GBP - British Pound</option>
+            <option>JPY - Japanese Yen</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="settings-section">
+        <h3>Experimental Features</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Beta Program</label>
+            <div class="setting-description">Try out new features before they're released</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>New UI Layout</label>
+            <div class="setting-description">Enable redesigned interface</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="settings-section">
+        <h3>Support</h3>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Help Center</label>
+            <div class="setting-description">Find answers to common questions</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Visit Help Center</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Contact Support</label>
+            <div class="setting-description">Get help from our team</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Send Message</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Report a Bug</label>
+            <div class="setting-description">Found an issue? Let us know</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Submit Report</button>
+        </div>
+        
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>Feedback</label>
+            <div class="setting-description">Share your thoughts with us</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Send Feedback</button>
+        </div>
+      </div>
+      
+      <div class="settings-section">
+        <div class="setting-item fl">
+          <div class="setting-label">
+            <label>App Version</label>
+            <div class="setting-description">v2.4.1 (Build 4721)</div>
+          </div>
+          <button class="btn btn-outline btn-sm">Check for Updates</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px; text-align: right;">
+      <button class="btn btn-outline" style="margin-right: 10px;">Cancel</button>
+      <button class="btn btn-primary">Save Changes</button>
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      // Hide all tab contents
+      const tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      // Remove active class from all tabs
+      const tabLinks = document.getElementsByClassName("settings-tab");
+      for (let i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove("active");
+      }
+      
+      // Show the current tab and add active class
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Simple toggle functionality for switches
+    document.querySelectorAll('.switch input').forEach(switchInput => {
+      switchInput.addEventListener('change', function() {
+        // You would typically save the preference here
+        console.log(`Setting ${this.id || 'unnamed'} changed to ${this.checked}`);
+      });
+    });
+    
+    // Mobile menu toggle
+    document.getElementById('menu-icon').addEventListener('click', function() {
+      document.querySelector('.navbar').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

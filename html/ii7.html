@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | StayEase</title>
+    
+    <link rel="stylesheet" href="ii7s.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- link to icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+
+
+
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    
+</head>
+<body>
+
+    <!-- navbar-->
+    <header>
+        <a href="" class="logo">
+            <img src="img/bdb606b42e844355dacbc77fcc738923.png" class="imglogo" alt="">
+            <h2>DarDz</h2></a>
+        <!-- menu icon-->
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!-- nav list -->
+         <ul class="navbar">
+            <li><a href="C:\Users\Dell\Desktop\test\index.html" >Home</a></li>
+            <li><a href="#search" >Search</a></li>
+            <li><a href="#about" class="home-active">My Dashboard</a></li>
+         </ul>
+         <!-- profile-->
+          <div class="profile">
+            <img src="img/profile.jpg" alt="">
+            <span>Abdus Rahman</span>
+            <i class='bx bx-caret-down'></i>
+          </div>
+
+     </header>
+     <!-- end navbar -->
+
+
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>StayEase Admin</h1>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
+        <li><a href="#"><span class="material-symbols-outlined">dashboard</span><span>DashBoard</span></a></li>
+        <li><a href="#"><span class="material-symbols-outlined">credit_card</span><span>Payments</span></a></li>  
+        <li><a href="#"><span class="material-symbols-outlined">settings</span><span>Settings</span></a></li>
+        <li><a href="#"><span class="material-symbols-outlined">person</span><span>Account</span></a></li>
+        <li><a href="#"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
+    
+                </ul>
+               
+            </nav>
+        </aside>
+    
+    <main class="main-content">
+        <!-- Dashboard Overview -->
+        <div id="dashboard" class="tab-content active">
+            <h1 class="section-title">Admin Dashboard Overview</h1>
+    
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="card border-primary">
+                    <p class="card-label">Total Users</p>
+                    <p class="card-value">1,458</p>
+                    <p class="card-change success"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                </div>
+                <div class="card border-accent">
+                    <p class="card-label">Active Listings</p>
+                    <p class="card-value">286</p>
+                    <p class="card-change success"><i class="fas fa-arrow-up"></i> 8% from last month</p>
+                </div>
+                <div class="card border-success">
+                    <p class="card-label">Pending Approvals</p>
+                    <p class="card-value">18</p>
+                    <p class="card-change danger"><i class="fas fa-arrow-down"></i> 5 from yesterday</p>
+                </div>
+                <div class="card border-warning">
+                    <p class="card-label">Monthly Revenue</p>
+                    <p class="card-value">$32,450</p>
+                    <p class="card-change success"><i class="fas fa-arrow-up"></i> 22% from last month</p>
+                </div>
+            </div>
+    
+            <!-- Charts -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h2>User Growth</h2>
+                    <canvas id="usersChart" height="250"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h2>Revenue</h2>
+                    <canvas id="revenueChart" height="250"></canvas>
+                </div>
+            </div>
+    
+            <!-- Recent Activity Table -->
+            <div class="activity-card">
+                <h2>Recent Activity</h2>
+                <div class="table-wrapper">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>User</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>New listing submitted</td>
+                                <td>Michael Chen</td>
+                                <td>2 minutes ago</td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>User registration</td>
+                                <td>Emily Johnson</td>
+                                <td>15 minutes ago</td>
+                                <td><span class="badge badge-success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Review reported</td>
+                                <td>David Wilson</td>
+                                <td>1 hour ago</td>
+                                <td><span class="badge badge-danger">Urgent</span></td>
+                            </tr>
+                            <tr>
+                                <td>Payment processed</td>
+                                <td>Alex Rodriguez</td>
+                                <td>3 hours ago</td>
+                                <td><span class="badge badge-success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+           
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- User Management -->
+    <div class="toolbar">
+        <h1 class="section-title">User Management</h1>
+        <div style="display: flex; align-items: center;">
+          <div class="search-box">
+            <input type="text" placeholder="Search users...">
+            <i class="fas fa-search"></i>
+          </div>
+          <button class="btn-add"><i class="fas fa-plus"></i> Add User</button>
+        </div>
+      </div>
+    
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="user-info">
+                <img src="https://picsum.photos/40/40?random=101" alt="User">
+                <div>
+                  <p><strong>Sarah Johnson</strong></p>
+                  <p style="color: #6b7280; font-size: 0.875rem;">Joined Jun 2022</p>
+                </div>
+              </div>
+            </td>
+            <td>sarah@example.com</td>
+            <td><span class="badge bg-blue-100">Tenant</span></td>
+            <td><span class="badge bg-green-100">Active</span></td>
+            <td class="action-buttons">
+              <i class="fas fa-edit" style="color:#2563eb;"></i>
+              <i class="fas fa-ban" style="color:#6b7280;"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="user-info">
+                <img src="https://picsum.photos/40/40?random=102" alt="User">
+                <div>
+                  <p><strong>Alex Rodriguez</strong></p>
+                  <p style="color: #6b7280; font-size: 0.875rem;">Joined Mar 2021</p>
+                </div>
+              </div>
+            </td>
+            <td>alex@example.com</td>
+            <td><span class="badge bg-purple-100">Owner</span></td>
+            <td><span class="badge bg-green-100">Active</span></td>
+            <td class="action-buttons">
+              <i class="fas fa-edit" style="color:#2563eb;"></i>
+              <i class="fas fa-ban" style="color:#6b7280;"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="user-info">
+                <img src="https://picsum.photos/40/40?random=103" alt="User">
+                <div>
+                  <p><strong>Michael Chen</strong></p>
+                  <p style="color: #6b7280; font-size: 0.875rem;">Joined Jan 2023</p>
+                </div>
+              </div>
+            </td>
+            <td>michael@example.com</td>
+            <td><span class="badge bg-blue-100">Tenant</span></td>
+            <td><span class="badge bg-yellow-100">Pending</span></td>
+            <td class="action-buttons">
+              <i class="fas fa-edit" style="color:#2563eb;"></i>
+              <i class="fas fa-ban" style="color:#6b7280;"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="user-info">
+                <img src="https://picsum.photos/40/40?random=104" alt="User">
+                <div>
+                  <p><strong>David Wilson</strong></p>
+                  <p style="color: #6b7280; font-size: 0.875rem;">Joined Nov 2022</p>
+                </div>
+              </div>
+            </td>
+            <td>david@example.com</td>
+            <td><span class="badge bg-purple-100">Owner</span></td>
+            <td><span class="badge bg-red-100">Suspended</span></td>
+            <td class="action-buttons">
+              <i class="fas fa-edit" style="color:#2563eb;"></i>
+              <i class="fas fa-check" style="color:#6b7280;"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <div class="table-footer">
+        <div>Showing 1 to 4 of 1,458 users</div>
+        <div class="pagination">
+          <button>Previous</button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>Next</button>
+        </div>
+      </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Listing Approval -->
+
+        <div class="listing-approval">
+            <div id="listings" class="tab-content">
+                <div class="header">
+                  <h1>Listing Approval</h1>
+                  <div class="actions">
+                    <div class="search-wrapper">
+                      <input type="text" placeholder="Search listings...">
+                      <i class="fas fa-search"></i>
+                    </div>
+                    <select>
+                      <option>All Types</option>
+                      <option>Apartments</option>
+                      <option>Houses</option>
+                      <option>Condos</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Listing</th>
+                        <th>Owner</th>
+                        <th>Submitted</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Row 1 -->
+                      <tr>
+                        <td>
+                          <div class="listing-info">
+                            <img src="https://picsum.photos/80/60?random=201" alt="Listing" class="listing-img">
+                            <div class="listing-text">
+                              <p class="font-medium">Luxury Penthouse Downtown</p>
+                              <p class="location">Los Angeles, CA</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="user-info">
+                            <img src="https://picsum.photos/30/30?random=202" alt="User" class="user-img">
+                            <span>Alex Rodriguez</span>
+                          </div>
+                        </td>
+                        <td>2 hours ago</td>
+                        <td><span class="badge">Pending Review</span></td>
+                        <td class="action-buttons">
+                          <button class="text-primary"><i class="fas fa-eye"></i></button>
+                          <button class="text-success"><i class="fas fa-check"></i></button>
+                          <button class="text-danger"><i class="fas fa-times"></i></button>
+                        </td>
+                      </tr>
+                      <!-- Row 2 -->
+                      <tr>
+                        <td>
+                          <div class="listing-info">
+                            <img src="https://picsum.photos/80/60?random=203" alt="Listing" class="listing-img">
+                            <div class="listing-text">
+                              <p class="font-medium">Cozy Beachfront Villa</p>
+                              <p class="location">Miami, FL</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="user-info">
+                            <img src="https://picsum.photos/30/30?random=204" alt="User" class="user-img">
+                            <span>Maria Garcia</span>
+                          </div>
+                        </td>
+                        <td>5 hours ago</td>
+                        <td><span class="badge">Pending Review</span></td>
+                        <td class="action-buttons">
+                          <button class="text-primary"><i class="fas fa-eye"></i></button>
+                          <button class="text-success"><i class="fas fa-check"></i></button>
+                          <button class="text-danger"><i class="fas fa-times"></i></button>
+                        </td>
+                      </tr>
+                      <!-- Row 3 -->
+                      <tr>
+                        <td>
+                          <div class="listing-info">
+                            <img src="https://picsum.photos/80/60?random=205" alt="Listing" class="listing-img">
+                            <div class="listing-text">
+                              <p class="font-medium">Modern Downtown Loft</p>
+                              <p class="location">New York, NY</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="user-info">
+                            <img src="https://picsum.photos/30/30?random=206" alt="User" class="user-img">
+                            <span>James Smith</span>
+                          </div>
+                        </td>
+                        <td>1 day ago</td>
+                        <td><span class="badge">Pending Review</span></td>
+                        <td class="action-buttons">
+                          <button class="text-primary"><i class="fas fa-eye"></i></button>
+                          <button class="text-success"><i class="fas fa-check"></i></button>
+                          <button class="text-danger"><i class="fas fa-times"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="footer">
+                    <div>Showing 1 to 3 of 18 pending listings</div>
+                    <div class="pagination">
+                      <button>Previous</button>
+                      <button class="active">1</button>
+                      <button>2</button>
+                      <button>3</button>
+                      <button>Next</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+        
+
+
+          <!-- Review Reports -->
+          <div class="Review-Reports">
+            <div id="reviews" class="tab-content">
+                <div class="header-container">
+                    <h1 class="header-title">Review Reports</h1>
+                    <div class="header-controls">
+                        <div class="search-container">
+                            <input type="text" placeholder="Search reviews..." class="search-input">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        <select class="status-select">
+                            <option>All Statuses</option>
+                            <option>Pending</option>
+                            <option>Resolved</option>
+                            <option>Dismissed</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Review Content</th>
+                                <th>Listing</th>
+                                <th>Reported By</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="flex items-start">
+                                        <div style="flex-shrink: 0;" class="mr-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-empty"></i>
+                                                <i class="fas fa-star star-empty"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium">"The place was dirty and nothing like the photos..."</p>
+                                            <p class="text-gray-500 text-sm">- David Wilson, 3 days ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 bg-red-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium text-danger">Report Reason:</p>
+                                        <p class="text-sm">"False information and misleading photos"</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/40/30?random=301" alt="Listing" class="w-10 h-8 rounded mr-2 object-cover" loading="lazy">
+                                        <span>Downtown Loft</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/30/30?random=302" alt="User" class="w-8 h-8 rounded-full mr-2" loading="lazy">
+                                        <span>Alex Rodriguez</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">
+                                    <span class="badge bg-red-100 text-danger">Urgent</span>
+                                </td>
+                                <td class="whitespace-nowrap">
+                                    <button class="action-button text-primary">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-button text-success mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="action-button text-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="flex items-start">
+                                        <div style="flex-shrink: 0;" class="mr-3">
+                                            <div class="flex items-center">
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-filled"></i>
+                                                <i class="fas fa-star star-filled"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium">"Perfect location and amazing host!"</p>
+                                            <p class="text-gray-500 text-sm">- Sarah Johnson, 1 week ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 bg-yellow-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium text-warning">Report Reason:</p>
+                                        <p class="text-sm">"Suspiciously positive, possible fake review"</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/40/30?random=303" alt="Listing" class="w-10 h-8 rounded mr-2 object-cover" loading="lazy">
+                                        <span>Beachfront Condo</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/30/30?random=304" alt="User" class="w-8 h-8 rounded-full mr-2" loading="lazy">
+                                        <span>Anonymous</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">
+                                    <span class="badge bg-yellow-100 text-warning">Pending</span>
+                                </td>
+                                <td class="whitespace-nowrap">
+                                    <button class="action-button text-primary mr-3">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-button text-success mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="action-button text-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-container">
+                        <div class="text-sm text-gray-500">
+                            Showing 1 to 2 of 3 reported reviews
+                        </div>
+                        <div class="pagination-buttons">
+                            <button class="pagination-button">Previous</button>
+                            <button class="pagination-button active">1</button>
+                            <button class="pagination-button">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <div class="payments">
+            <!-- Payments -->
+            <div id="payments" class="tab-content">
+                <div class="header-container">
+                    <h1 class="header-title">Payments Overview</h1>
+                    <div class="header-controls">
+                        <div class="search-container">
+                            <input type="text" placeholder="Search payments..." class="search-input">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        <select class="status-select">
+                            <option>All Statuses</option>
+                            <option>Completed</option>
+                            <option>Pending</option>
+                            <option>Failed</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="grid-container">
+                    <div class="card">
+                        <h2 class="card-title">Transaction Volume</h2>
+                        <div class="chart-container">
+                            <canvas id="transactionsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h2 class="card-title">Payouts to Owners</h2>
+                        <div class="chart-container">
+                            <canvas id="payoutsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h2 class="card-title">Recent Transactions</h2>
+                        <div class="transactions-list">
+                            <div class="transaction-item">
+                                <div>
+                                    <p class="font-medium">#TRX-78945</p>
+                                    <p class="text-sm text-gray-500">Sarah Johnson</p>
+                                </div>
+                                <p class="font-bold text-success">350DZD</p>
+                            </div>
+                            <div class="transaction-item">
+                                <div>
+                                    <p class="font-medium">#TRX-78944</p>
+                                    <p class="text-sm text-gray-500">Michael Chen</p>
+                                </div>
+                                <p class="font-bold text-success">180DZD</p>
+                            </div>
+                            <div class="transaction-item">
+                                <div>
+                                    <p class="font-medium">#TRX-78943</p>
+                                    <p class="text-sm text-gray-500">Emily Wilson</p>
+                                </div>
+                                <p class="font-bold text-success">250DZD</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>User</th>
+                                <th>Listing</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="whitespace-nowrap">#TRX-78945</td>
+                                <td class="whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/30/30?random=401" alt="User" class="w-8 h-8 rounded-full mr-2" loading="lazy">
+                                        <span>Sarah Johnson</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/40/30?random=402" alt="Listing" class="w-10 h-8 rounded mr-2 object-cover" loading="lazy">
+                                        <span>Luxury Penthouse</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">Jun 15, 2023</td>
+                                <td class="whitespace-nowrap font-bold">350DZD</td>
+                                <td class="whitespace-nowrap">
+                                    <span class="badge bg-green-100 text-success">Completed</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="whitespace-nowrap">#TRX-78944</td>
+                                <td class="whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/30/30?random=403" alt="User" class="w-8 h-8 rounded-full mr-2" loading="lazy">
+                                        <span>Michael Chen</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/40/30?random=404" alt="Listing" class="w-10 h-8 rounded mr-2 object-cover" loading="lazy">
+                                        <span>Downtown Loft</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">Jun 14, 2023</td>
+                                <td class="whitespace-nowrap font-bold">180DZD</td>
+                                <td class="whitespace-nowrap">
+                                    <span class="badge bg-green-100 text-success">Completed</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="whitespace-nowrap">#TRX-78943</td>
+                                <td class="whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/30/30?random=405" alt="User" class="w-8 h-8 rounded-full mr-2" loading="lazy">
+                                        <span>Emily Wilson</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/40/30?random=406" alt="Listing" class="w-10 h-8 rounded mr-2 object-cover" loading="lazy">
+                                        <span>Beachfront Condo</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-nowrap">Jun 12, 2023</td>
+                                <td class="whitespace-nowrap font-bold">250DZD</td>
+                                <td class="whitespace-nowrap">
+                                    <span class="badge bg-yellow-100 text-warning">Processing</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-container">
+                        <div class="text-sm text-gray-500">
+                            Showing 1 to 3 of 128 transactions
+                        </div>
+                        <div class="pagination-buttons">
+                            <button class="pagination-button">Previous</button>
+                            <button class="pagination-button active">1</button>
+                            <button class="pagination-button">2</button>
+                            <button class="pagination-button">3</button>
+                            <button class="pagination-button">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="settings">
+            <!-- Settings -->
+            <div id="settings" class="tab-content">
+                <h1 class="header-title">Platform Settings</h1>
+                <div class="settings-container">
+                    <form>
+                        <div class="mb-8">
+                            <h2 class="section-title">General Settings</h2>
+                            <div class="grid-container">
+                                <div class="form-group">
+                                    <label>Platform Name</label>
+                                    <input type="text" value="DariDz" class="w-full">
+                                </div>
+                                <div class="form-group">
+                                    <label>Default Currency</label>
+                                    <select class="w-full">
+                                        <option>DZD (DSD)</option>
+                                        <option>USD ($)</option>
+                                        <option>EUR (€)</option>
+                                        <option>GBP (£)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Commission Rate</label>
+                                    <div class="input-with-suffix">
+                                        <input type="text" value="15" class="w-full pr-10">
+                                        <span class="input-suffix">%</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Timezone</label>
+                                    <select class="w-full">
+                                        <option>(UTC-08:00) Pacific Time</option>
+                                        <option>(UTC-05:00) Eastern Time</option>
+                                        <option>(UTC+00:00) London</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-8">
+                            <h2 class="section-title">Listing Approval</h2>
+                            <div class="space-y-4">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="autoApprove">
+                                    <label for="autoApprove">Enable auto-approval for trusted owners</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="requireVerification" checked>
+                                    <label for="requireVerification">Require ID verification for new owners</label>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mb-8">
+                            <h2 class="section-title">Payment Settings</h2>
+                            <div class="grid-container">
+                                <div class="form-group">
+                                    <label>Payment Method</label>
+                                    <select class="w-full">
+                                        <option>CCP</option>
+                                        <option>RedotPay</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Payout Schedule</label>
+                                    <select class="w-full">
+                                        <option>Daily</option>
+                                        <option>Weekly</option>
+                                        <option>Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <button type="button" class="save-button">Save Settings</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+          
+    
+
+    <!-- Chart.js would be included here for the charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Tab functionality
+        document.querySelectorAll('[data-tab]').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.admin-nav a').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Initialize Users Chart
+        const usersCtx = document.getElementById('usersChart');
+        if (usersCtx) {
+            new Chart(usersCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'New Users',
+                        data: [85, 92, 105, 120, 150, 180, 200, 190, 175, 160, 140, 110],
+                        borderColor: '#3B82F6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart');
+        if (revenueCtx) {
+            new Chart(revenueCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [12000, 15000, 18000, 21000, 25000, 30000, 32000, 31000, 29000, 27000, 24000, 20000],
+                        backgroundColor: '#10B981',
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Transactions Chart
+        const transactionsCtx = document.getElementById('transactionsChart');
+        if (transactionsCtx) {
+            new Chart(transactionsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Pending', 'Failed'],
+                    datasets: [{
+                        data: [85, 10, 5],
+                        backgroundColor: ['#10B981', '#F59E0B', '#EF4444'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Payouts Chart
+        const payoutsCtx = document.getElementById('payoutsChart');
+        if (payoutsCtx) {
+            new Chart(payoutsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Payouts',
+                        data: [8000, 10000, 12000, 15000, 18000, 20000],
+                        borderColor: '#8B5CF6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.05)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        
+            // Initialize charts (placeholder - actual implementation would vary)
+            document.addEventListener('DOMContentLoaded', function() {
+                // Transactions Chart
+                const transactionsCtx = document.getElementById('transactionsChart').getContext('2d');
+                new Chart(transactionsCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Transactions',
+                            data: [12000, 19000, 15000, 18000, 22000, 25000],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                // Payouts Chart
+                const payoutsCtx = document.getElementById('payoutsChart').getContext('2d');
+                new Chart(payoutsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Payouts',
+                            data: [8000, 12000, 10000, 14000, 16000, 18000],
+                            backgroundColor: '#10b981'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        
+    </script>
+</body>
+</html>
