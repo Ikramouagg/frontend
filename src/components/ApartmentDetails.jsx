@@ -89,14 +89,14 @@ const ApartmentDetails = () => {
             {/* Top Blue Bar */}
             <div style={{ width: '100%', background: '#212842', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'fixed', top: 0, left: 0, zIndex: 100, boxShadow: '0 2px 8px #0002' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginLeft: 32 }}>
-                    <img src="/logo.jpg" alt="logo" style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'cover', background: '#fff' }} />
+                    <img src="/logo.png" alt="logo" style={{ width: 32, height: 32 }} />
                     <span style={{ color: '#FBE2AB', fontWeight: 700, fontSize: 20 }}>DarDz</span>
                 </div>
                 <nav style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
                     <a href="/" style={{ color: '#fff', textDecoration: 'none', fontWeight: 500 }}>Home</a>
                     <a href="#apartements" style={{ color: '#fff', textDecoration: 'none', fontWeight: 500 }}>Apartements</a>
                     <a href="#about" style={{ color: '#fff', textDecoration: 'none', fontWeight: 500 }}>About</a>
-                    <a href="#customers" style={{ color: '#fff', textDecoration: 'none', fontWeight: 500 }}>Customers</a>
+                    <a href="/booking" style={{ color: '#fff', textDecoration: 'none', fontWeight: 500 }}>MyBookings</a>
                     
                 </nav>
                 {user ? (

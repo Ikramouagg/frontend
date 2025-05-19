@@ -50,7 +50,7 @@ const Home = () => {
       <header>
         <div className="logo">
           <img
-            src="/logo.jpg"
+            src="/logo.png"
             className="imglogo"
             alt=""
           />
@@ -67,8 +67,8 @@ const Home = () => {
             <a href="#about" style={{ marginLeft: 10, marginRight: 10 }}>
               About
             </a>
-            <a href="#customers" style={{ marginLeft: 10, marginRight: 10 }}>
-              Customers
+            <a href="/booking" style={{ marginLeft: 10, marginRight: 10 }}>
+              MyBookings
             </a>
           </div>
           <div className="tt2">
@@ -131,7 +131,7 @@ const Home = () => {
         <div className="hh">
           <div className="hh1"></div>
           <img
-            src="/back.jpg"
+            src="/back.png"
             className="ih"
             alt=""
           />
@@ -139,13 +139,66 @@ const Home = () => {
       </header>
       {/* end header */}
 
-      {/* start Main section */}
-      <section>
+      
+ {/* Owner's Apartments Section */}
+ {user && user.role === 'Owner' && (
+        <section>
+          <div className="header-line">
+            <h1>My Properties</h1>
+            <hr />
+          </div>
+          <section className="products" id="owner-products">
+            <div className="products-container">
+              {loading ? (
+                <div className="loading">Loading your properties...</div>
+              ) : error ? (
+                <div className="error">{error}</div>
+              ) : (
+                apartments
+                  .filter(apartment => apartment.owner_id === user.id)
+                  .map((apartment) => (
+                    <div 
+                      className="box" 
+                      key={apartment.id}
+                      onClick={() => navigate(`/apartments/${apartment.id}`)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <img src={apartment.primary_image} alt={apartment.title} />
+                      <h2>{apartment.title}</h2>
+                      <h3>{apartment.location}</h3>
+                      <h1 className="price">
+                        {apartment.price}DZD <span>/month</span>
+                      </h1>
+                      <i className="bx bx-cart-alt"></i>
+                      <i className="bx bx-heart"></i>
+                      <span className="discountg">Available</span>
+                      <hr />
+                      <div className="icons">
+                        <div className="i">
+                          <i className="bx bx-user"> {apartment.owner_name} </i>
+                          <p>Owner</p>
+                        </div>
+                        <div className="i">
+                          <i className="bx bx-map"> {apartment.location} </i>
+                          <p>Location</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+              )}
+            </div>
+          </section>
+        </section>
+      )}
+
+{/* start Main section */}
+<section>
         <div className="header-line">
           <h1>Rental Offers</h1>
           <hr />
         </div>
       </section>
+
 
       {/* start products */}
       <section className="products" id="products">
@@ -189,10 +242,12 @@ const Home = () => {
       </section>
       {/* end products */}
 
+     
+
       {/* end Main section */}
 
       <section className="about" id="about">
-        <img src="/key.jpg" alt="" />
+        <img src="/key.png" alt="" />
         <div className="about-text">
           <span>About Us</span>
           <p>
@@ -220,7 +275,7 @@ const Home = () => {
             </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ratione quod est error quae. Itaque, id.</p>
             <div className="review-profile">
-              <img src="img/c1.png" alt="" />
+              <img src="c1.png" alt="" />
               <h3>Ethan smith</h3>
             </div>
           </div>
@@ -236,7 +291,7 @@ const Home = () => {
             </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ratione quod est error quae. Itaque, id.</p>
             <div className="review-profile">
-              <img src="img/c2.jpg" alt="" />
+              <img src="c2.jpg" alt="" />
               <h3>Ethan smith</h3>
             </div>
           </div>
@@ -252,7 +307,7 @@ const Home = () => {
             </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ratione quod est error quae. Itaque, id.</p>
             <div className="review-profile">
-              <img src="img/c3.jpg" alt="" />
+              <img src="c3.jpg" alt="" />
               <h3>Ethan smith</h3>
             </div>
           </div>
