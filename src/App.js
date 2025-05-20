@@ -1,11 +1,11 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Register from './components/Register';
-import ApartmentDetails from './components/ApartmentDetails';
-import BookingPage from './components/BookingPage';
-
+import Home from './components/Home.jsx';
+import Register from './components/Register.jsx';
+import ApartmentDetails from './components/ApartmentDetails.jsx';
+import BookingPage from './components/BookingPage.jsx';
+import PublishProperty from './components/PublishProperty.jsx';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/login" element={<Register />} />
         <Route path="/apartments/:id" element={<ApartmentDetails />} />
         <Route path="/booking" element={<BookingPage />} />
+        <Route path="/publish" element={<PublishProperty />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish Property</title>
+    <link rel="stylesheet" href="ii6s.css">
+    <meta name="description" content="Publish your property on StayEase">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    
+</head>
+<body>
+    
+    <!-- end navbar -->
+    
+    <div class="main-content">
+        <div class="container">
+            <div class="publish-container">
+                <h1 class="page-title">Publish Your Property</h1>
+                
+                <form id="propertyForm">
+                    <!-- Basic Information Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">Basic Information</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="propertyTitle">Property Title*</label>
+                                    <input type="text" id="propertyTitle" class="form-control" placeholder="e.g. Luxury Penthouse with Stunning View" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="propertyType">Property Type*</label>
+                                    <select id="propertyType" class="form-control" required>
+                                        <option value="">Select Property Type</option>
+                                        <option value="apartment">Apartment</option>
+                                        <option value="house">House</option>
+                                        <option value="villa">Villa</option>
+                                        <option value="cottage">Cottage</option>
+                                        <option value="hotel">Hotel</option>
+                                        <option value="guesthouse">Guest House</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bedrooms">Bedrooms*</label>
+                                    <input type="number" id="bedrooms" class="form-control" min="0" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="description">Description*</label>
+                                    <textarea id="description" class="form-control" placeholder="Describe your property in detail..." required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bathrooms">Bathrooms*</label>
+                                    <input type="number" id="bathrooms" class="form-control" min="0" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="guests">Maximum Guests*</label>
+                                    <input type="number" id="guests" class="form-control" min="1" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Location Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">Location</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="country">Country*</label>
+                                    <select id="country" class="form-control" required>
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                        <!-- More countries can be added -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="city">City*</label>
+                                    <input type="text" id="city" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="address">Address*</label>
+                                    <input type="text" id="address" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="zipcode">ZIP/Postal Code</label>
+                                    <input type="text" id="zipcode" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Property Location on Map</label>
+                            <div id="map" class="map-container"></div>
+                            <small class="text-muted">Click on the map to set your property location</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Amenities Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">Amenities</h2>
+                        
+                        <div class="form-group">
+                            <label>Select Amenities</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="wifi" name="amenities">
+                                    <label for="wifi">WiFi</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="parking" name="amenities">
+                                    <label for="parking">Parking</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="pool" name="amenities">
+                                    <label for="pool">Swimming Pool</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="kitchen" name="amenities">
+                                    <label for="kitchen">Kitchen</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="ac" name="amenities">
+                                    <label for="ac">Air Conditioning</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="heating" name="amenities">
+                                    <label for="heating">Heating</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tv" name="amenities">
+                                    <label for="tv">TV</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="washer" name="amenities">
+                                    <label for="washer">Washer</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="dryer" name="amenities">
+                                    <label for="dryer">Dryer</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="workspace" name="amenities">
+                                    <label for="workspace">Workspace</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">Pricing</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="pricePerNight">Price Per Night (DZD)*</label>
+                                    <input type="number" id="pricePerNight" class="form-control" min="0" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="weeklyDiscount">Weekly Discount (%)</label>
+                                    <input type="number" id="weeklyDiscount" class="form-control" min="0" max="100">
+                                </div>
+                            </div>
+                            
+                            <div class="form-col">
+                                <div class="form-group">
+                                    <label for="cleaningFee">Cleaning Fee (DZD)</label>
+                                    <input type="number" id="cleaningFee" class="form-control" min="0">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="monthlyDiscount">Monthly Discount (%)</label>
+                                    <input type="number" id="monthlyDiscount" class="form-control" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photos Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">Photos</h2>
+                        
+                        <div class="form-group">
+                            <label>Upload Property Photos*</label>
+                            <div class="file-upload" id="fileUpload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload or drag and drop</p>
+                                <small>PNG, JPG, GIF up to 10MB</small>
+                                <input type="file" id="propertyImages" multiple accept="image/*" style="display: none;">
+                            </div>
+                            
+                            <div class="preview-images" id="previewImages"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Additional Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="checkInTime">Check-in Time</label>
+                            <input type="time" id="checkInTime" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkOutTime">Check-out Time</label>
+                            <input type="time" id="checkOutTime" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="houseRules">House Rules</label>
+                            <textarea id="houseRules" class="form-control" placeholder="Any specific rules for guests..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Buttons -->
+                    <div class="btn-group">
+                        <button type="submit" class="btn">Publish Property</button>
+                        <button type="button" class="btn btn-secondary">Save as Draft</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        // Toggle menu for mobile
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            document.querySelector('.menu').classList.toggle('active');
+            document.querySelector('.navbar').classList.toggle('active');
+        });
+        
+        // Initialize map
+        document.addEventListener('DOMContentLoaded', function() {
+            // Default coordinates (New York)
+            const defaultLat = 40.7128;
+            const defaultLng = -74.0060;
+            
+            // Initialize map
+            const map = L.map('map').setView([defaultLat, defaultLng], 13);
+            
+            // Add tile layer (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add marker
+            let marker = L.marker([defaultLat, defaultLng], {
+                draggable: true
+            }).addTo(map);
+            
+            // Update marker position on click
+            map.on('click', function(e) {
+                marker.setLatLng(e.latlng);
+            });
+            
+            // File upload functionality
+            const fileUpload = document.getElementById('fileUpload');
+            const fileInput = document.getElementById('propertyImages');
+            const previewContainer = document.getElementById('previewImages');
+            
+            fileUpload.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function() {
+                previewContainer.innerHTML = '';
+                
+                if (fileInput.files) {
+                    Array.from(fileInput.files).forEach(file => {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            const previewDiv = document.createElement('div');
+                            previewDiv.className = 'image-preview';
+                            
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            
+                            const removeBtn = document.createElement('button');
+                            removeBtn.className = 'remove-image';
+                            removeBtn.innerHTML = '&times;';
+                            removeBtn.addEventListener('click', function() {
+                                previewDiv.remove();
+                            });
+                            
+                            previewDiv.appendChild(img);
+                            previewDiv.appendChild(removeBtn);
+                            previewContainer.appendChild(previewDiv);
+                        }
+                        
+                        reader.readAsDataURL(file);
+                    });
+                }
+            });
+            
+            // Drag and drop functionality
+            fileUpload.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                fileUpload.style.borderColor = 'var(--blue-color)';
+                fileUpload.style.backgroundColor = '#f0f8ff';
+            });
+            
+            fileUpload.addEventListener('dragleave', function() {
+                fileUpload.style.borderColor = '#ddd';
+                fileUpload.style.backgroundColor = '#f9f9f9';
+            });
+            
+            fileUpload.addEventListener('drop', function(e) {
+                e.preventDefault();
+                fileUpload.style.borderColor = '#ddd';
+                fileUpload.style.backgroundColor = '#f9f9f9';
+                
+                if (e.dataTransfer.files) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+            
+            // Form submission
+            document.getElementById('propertyForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Property published successfully!');
+                // Here you would typically send the form data to the server
+            });
+        });
+    </script>
+</body>
+</html>
