@@ -124,8 +124,10 @@ const Home = () => {
         </div>
         {user && user.role === 'Owner' && (
           <button className="cta">
+             <a href="/publish">
             <i className="bx bx-plus-circle"></i>
             Add Property
+             </a>
           </button>
         )}
         <div className="hh">

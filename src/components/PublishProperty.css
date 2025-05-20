@@ -85,7 +85,7 @@ body {
 }
 
 /* Header Styles */
-header {
+.publish-property-header {
     position: fixed;
     width: 100%;
     top: 0;
@@ -100,7 +100,7 @@ header {
     transition: 0.5s;
 }
 
-.profile {
+.publish-property-header .profile {
     display: flex;
     align-items: center;
     column-gap: 0;
@@ -108,7 +108,7 @@ header {
     color: var(--bg-color);
 }
 
-.profile img {
+.publish-property-header .profile img {
     width: 40px;
     height: 40px;
     object-fit: cover;
@@ -116,13 +116,13 @@ header {
     border-radius: 50%;
 }
 
-.profile span {
+.publish-property-header .profile span {
     padding-left: 4px;
     font-size: 13px;
     font-weight: 500;
 }
 
-.logo {
+.publish-property-header .logo {
     display: flex;
     align-items: center;
     font-size: 1.1rem;
@@ -131,40 +131,40 @@ header {
     column-gap: 0.5rem;
 }
 
-.logo h2 {
+.publish-property-header .logo h2 {
      margin-top: 10px;
      font-size: 19px;
       font-weight: 600;
 }
 
-.imglogo {
+.publish-property-header .imglogo {
     position: relative;
     width: 40px;
     height: 40px;
     margin-left: 50%;
 }
 
-.navbar {
+.publish-property-header .navbar {
     display: flex;
     column-gap: 0.5rem;
 }
 
-.navbar a {
+.publish-property-header .navbar a {
     font-size: 1rem;
     font-weight: 500;
     color: var(--bg-color);
     padding: 0.5rem 1rem;
 }
 
-.navbar a:hover,
-.navbar .home-active {
+.publish-property-header .navbar a:hover,
+.publish-property-header .navbar .home-active {
     background: var(--text-color);
     border-radius: 5rem;
     color: var(--blue-color);
     transition: background 0.5s;
 }
 
-#menu-icon {
+.publish-property-header #menu-icon {
     font-size: 24px;
     cursor: pointer;
     z-index: 10001;
@@ -183,7 +183,7 @@ header {
     margin-left: 185px;
 }
 
-.container {
+.publish-container-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;

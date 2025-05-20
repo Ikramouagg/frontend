@@ -8,6 +8,7 @@ const BookingPage = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [updatingStatus, setUpdatingStatus] = useState(null); // Track which booking is being updated
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,7 +24,12 @@ const BookingPage = () => {
             
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:3000/booking/tenant/${user.id || user.tenant_id}`);
+                // Choose endpoint based on user role
+                const endpoint = user.role === 'Owner' 
+                    ? `http://localhost:3000/booking/owner/${user.id}`
+                    : `http://localhost:3000/booking/tenant/${user.id || user.tenant_id}`;
+
+                const response = await fetch(endpoint);
                 if (!response.ok) {
                     if (response.status === 404) {
                         // No bookings found is not an error
@@ -50,6 +56,36 @@ const BookingPage = () => {
         localStorage.removeItem('user');
         setUser(null);
         navigate('/login');
+    };
+
+    const handleStatusUpdate = async (bookingId, newStatus) => {
+        try {
+            setUpdatingStatus(bookingId);
+            const response = await fetch(`http://localhost:3000/booking/${bookingId}/status`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status: newStatus })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update booking status');
+            }
+
+            // Update the local state with the new status
+            setBookings(prevBookings => 
+                prevBookings.map(booking => 
+                    booking.booking_id === bookingId 
+                        ? { ...booking, status: newStatus }
+                        : booking
+                )
+            );
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setUpdatingStatus(null);
+        }
     };
 
     if (loading) return <div className="loading">Loading your bookings...</div>;
@@ -81,11 +117,17 @@ const BookingPage = () => {
 
             {/* Main Content */}
             <div style={{ maxWidth: 1200, margin: '48px auto 0 auto', borderRadius: 40, boxShadow: '0 8px 32px #0002', background: '#fff', padding: 32 }}>
-                <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 24 }}>Your Bookings</h1>
+                <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 24 }}>
+                    {user?.role === 'Owner' ? 'Property Bookings' : 'Your Bookings'}
+                </h1>
                 
                 {bookings.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '48px 0' }}>
-                        <div style={{ fontSize: 18, color: '#6b7280', marginBottom: 16 }}>You haven't made any bookings yet</div>
+                        <div style={{ fontSize: 18, color: '#6b7280', marginBottom: 16 }}>
+                            {user?.role === 'Owner' 
+                                ? 'No bookings for your properties yet' 
+                                : 'You haven\'t made any bookings yet'}
+                        </div>
                         <button 
                             onClick={() => navigate('/')}
                             style={{ 
@@ -104,7 +146,7 @@ const BookingPage = () => {
                 ) : (
                     <div style={{ display: 'grid', gap: 24 }}>
                         {bookings.map((booking) => (
-                            <div key={booking.id} style={{ 
+                            <div key={booking.booking_id} style={{ 
                                 display: 'grid', 
                                 gridTemplateColumns: '1fr 2fr 1fr', 
                                 gap: 24, 
@@ -149,7 +191,45 @@ const BookingPage = () => {
                                     }}>
                                         {booking.status}
                                     </div>
-                                    <div style={{ color: '#6b7280', fontSize: 14 }}>Hosted by {booking.owner_name}</div>
+                                    <div style={{ color: '#6b7280', fontSize: 14 }}>
+                                        {user?.role === 'Owner' ? `Booked by ${booking.tenant_name}` : `Hosted by ${booking.owner_name}`}
+                                    </div>
+                                    {user?.role === 'Owner' && booking.status === 'Pending' && (
+                                        <div style={{ display: 'flex', gap: 8 }}>
+                                            <button
+                                                onClick={() => handleStatusUpdate(booking.booking_id, 'Confirmed')}
+                                                disabled={updatingStatus === booking.booking_id}
+                                                style={{
+                                                    padding: '8px 16px',
+                                                    borderRadius: 8,
+                                                    border: 'none',
+                                                    background: '#22c55e',
+                                                    color: 'white',
+                                                    fontWeight: 500,
+                                                    cursor: 'pointer',
+                                                    opacity: updatingStatus === booking.booking_id ? 0.7 : 1
+                                                }}
+                                            >
+                                                {updatingStatus === booking.booking_id ? 'Updating...' : 'Confirm'}
+                                            </button>
+                                            <button
+                                                onClick={() => handleStatusUpdate(booking.booking_id, 'Cancelled')}
+                                                disabled={updatingStatus === booking.booking_id}
+                                                style={{
+                                                    padding: '8px 16px',
+                                                    borderRadius: 8,
+                                                    border: 'none',
+                                                    background: '#ef4444',
+                                                    color: 'white',
+                                                    fontWeight: 500,
+                                                    cursor: 'pointer',
+                                                    opacity: updatingStatus === booking.booking_id ? 0.7 : 1
+                                                }}
+                                            >
+                                                {updatingStatus === booking.booking_id ? 'Updating...' : 'Cancel'}
+                                            </button>
+                                        </div>
+                                    )}
                                     <a 
                                         href={`/apartments/${booking.apartment_id}`}
                                         style={{ 
